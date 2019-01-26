@@ -11,6 +11,23 @@ public class TilemapGridObject : GridObject
     public Tilemap tilemap;
     public Tile tile;
 
+    public void Awake()
+    {
+        if (readFromTilemapOnAwake)
+        {
+            ReadFromTilemap();
+        }
+    }
+
+    private void ReadFromTilemap()
+    {
+        initialVolume.Clear();
+        foreach (Vector3Int p in tilemap.cellBounds.allPositionsWithin) {
+            if (tilemap.HasTile(p))
+                initialVolume.Add(p);
+        }
+    }
+
     public override void MergeVolume(IEnumerable<Vector3Int> vol, Vector3Int offset)
     {
         base.MergeVolume(vol, offset);

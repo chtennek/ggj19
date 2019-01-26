@@ -83,7 +83,7 @@
                         HashSet<Vector3Int> newVolume = new HashSet<Vector3Int>();
                         foreach (Vector3Int p in volume)
                         {
-                            newVolume.Add(new Vector3Int(p.y, -p.x, p.z)); // CCW
+                            newVolume.Add(new Vector3Int(-p.y, p.x, p.z)); // CCW
                         }
                         RemapVolume(newVolume);
                         rotation.z += 1;
