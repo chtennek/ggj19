@@ -22,12 +22,15 @@
             public virtual void RemapVolume(IEnumerable<Vector3Int> vol)
             {
                 // [TODO] collision check?
+                if (grid != null)
+                    grid.DeregisterObject(this);
 
-                grid.DeregisterObject(this);
                 volume.Clear();
                 foreach (Vector3Int v in vol)
                     volume.Add(v);
-                grid.RegisterObject(this);
+
+                if (grid != null)
+                    grid.RegisterObject(this);
             }
 
             public void MergeVolume(IEnumerable<Vector3Int> vol) { MergeVolume(vol, Vector3Int.zero); }
@@ -35,13 +38,17 @@
             {
                 // [TODO] collision check?
 
-                grid.DeregisterObject(this);
+                if (grid != null)
+                    grid.DeregisterObject(this);
+
                 foreach (Vector3Int v in vol)
                 {
                     Debug.Log(v + offset);
                     volume.Add(v + offset);
                 }
-                grid.RegisterObject(this);
+
+                if (grid != null)
+                    grid.RegisterObject(this);
             }
 
             public void Translate(GridObject o, Vector3Int offset)
