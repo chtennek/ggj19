@@ -15,7 +15,7 @@ namespace Primitives
             [Header("Parameters")]
             public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
             public GridObject gridObject;
-            public float delayedAutoRepeat = .1f;
+            public float delayedAutoRepeat = .2f;
 
             private Vector2 lastMove;
             private float lastMoveTimestamp;
@@ -39,7 +39,7 @@ namespace Primitives
 
             public void Move(Vector3Int offset)
             {
-                gridObject.grid.Translate(gridObject, offset);
+                gridObject.Translate(gridObject, offset);
             }
         }
     }

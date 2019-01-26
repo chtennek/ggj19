@@ -11,23 +11,20 @@ public class TilemapGridObject : GridObject
     public Tilemap tilemap;
     public Tile tile;
 
-    void Start()
+    public override void MergeVolume(IEnumerable<Vector3Int> vol)
     {
-        if (tilemap != null) {
-            if (readFromTilemapOnAwake)
-                volume = volume; // [TODO] TilemapToVolume
-            else
-                RemapVolume(volume);
-        }
+        base.MergeVolume(vol);
+
+        foreach (Vector3Int p in vol)
+            tilemap.SetTile(p, tile);
     }
 
-
-    public override void RemapVolume(List<Vector3Int> vol) {
+    public override void RemapVolume(IEnumerable<Vector3Int> vol)
+    {
         base.RemapVolume(vol);
 
         tilemap.ClearAllTiles();
-        foreach (Vector3Int p in vol) {
+        foreach (Vector3Int p in vol)
             tilemap.SetTile(p, tile);
-        }
     }
 }

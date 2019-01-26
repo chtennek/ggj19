@@ -130,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 277038288}
   - component: {fileID: 277038287}
-  - component: {fileID: 277038289}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -167,24 +166,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &277038289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277038286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 11500000, guid: 04859db7209d945279b372ebef8e6b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridScale: {x: 1, y: 1, z: 1}
-  gridOffset: {x: 0, y: 0, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967294
 --- !u!1 &417972876
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +177,9 @@ GameObject:
   - component: {fileID: 417972877}
   - component: {fileID: 417972879}
   - component: {fileID: 417972878}
-  m_Layer: 0
+  - component: {fileID: 417972881}
+  - component: {fileID: 417972880}
+  m_Layer: 12
   m_Name: Polyominoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,6 +396,39 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &417972880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417972876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 21a63e904360548799c3cedda441221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialVolume: []
+  grid: {fileID: 417972881}
+--- !u!114 &417972881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417972876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 04859db7209d945279b372ebef8e6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0, y: 0, z: 0}
+  initializeWithLayers:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +523,9 @@ GameObject:
   - component: {fileID: 571534141}
   - component: {fileID: 571534143}
   - component: {fileID: 571534142}
-  m_Layer: 0
+  - component: {fileID: 571534145}
+  - component: {fileID: 571534144}
+  m_Layer: 11
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,6 +1066,43 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &571534144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571534140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 21a63e904360548799c3cedda441221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialVolume:
+  - {x: -1, y: 0, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: -1, y: 2, z: 0}
+  - {x: -1, y: 3, z: 0}
+  grid: {fileID: 0}
+--- !u!114 &571534145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571534140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 04859db7209d945279b372ebef8e6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0, y: 0, z: 0}
+  initializeWithLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &885931244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,9 +1115,9 @@ GameObject:
   - component: {fileID: 885931247}
   - component: {fileID: 885931246}
   - component: {fileID: 885931248}
-  - component: {fileID: 885931250}
   - component: {fileID: 885931249}
-  m_Layer: 0
+  - component: {fileID: 885931250}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,9 +1302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b9a3c1a34054df98be55c936736e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume:
+  initialVolume:
   - {x: 0, y: 0, z: 0}
-  grid: {fileID: 277038289}
+  - {x: 0, y: 1, z: 0}
+  grid: {fileID: 0}
+  readFromTilemapOnAwake: 0
   tilemap: {fileID: 885931247}
   tile: {fileID: 11400000, guid: f77f5b7e26eca429581bafd98937b248, type: 2}
 --- !u!114 &885931249
@@ -1278,13 +1335,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 11500000, guid: 2400c5c3a3b324d399f434836cf68729, type: 3}
+  m_Script: {fileID: 11500000, guid: 27233b9ecaf3d4e63975d19af4f73463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Move
   swizzle: 0
-  gridOffset: {x: 0, y: 0, z: 0}
-  gridScale: {x: 1, y: 1, z: 1}
+  gridObject: {fileID: 885931248}
   delayedAutoRepeat: 0.2
 --- !u!1001 &9138879429750263198
 PrefabInstance:

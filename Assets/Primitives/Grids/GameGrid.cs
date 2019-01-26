@@ -12,20 +12,24 @@
             public Vector3 gridScale = Vector3.one;
             public Vector3 gridOffset = Vector3.zero;
 
-            public LayerMask initializeWithLayers = ~1;
+            public string initializeWithTag = "Untagged";
             private Dictionary<GridObject, Vector3Int> objPositions;
             private Dictionary<Vector3Int, HashSet<GridObject>> collisionMap; // Performance?
 
             private void Awake()
             {
+                objPositions = new Dictionary<GridObject, Vector3Int>();
                 collisionMap = new Dictionary<Vector3Int, HashSet<GridObject>>();
-                foreach (GridObject o in FindObjectsOfType<GridObject>()) {
-                    if ((initializeWithLayers & o.gameObject.layer) > 0)
-                        RegisterObject(o);
+
+                foreach (GridObject o in FindObjectsOfType<GridObject>())
+                {
+                    if (initializeWithTag == o.tag)
+                        RegisterObject(o, ToGridSpace(o));
                 }
             }
 
-            private void SetGridPoint(Vector3Int position, GridObject o, bool filled) {
+            private void SetGridPoint(Vector3Int position, GridObject o, bool filled)
+            {
                 if (collisionMap.ContainsKey(position) == false)
                     collisionMap[position] = new HashSet<GridObject>();
 
@@ -35,37 +39,42 @@
                     collisionMap[position].Remove(o);
             }
 
-            public bool Translate(GridObject o, Vector3Int offset) {
-                return false;
-                // [TODO]
+            public HashSet<GridObject> GetCollisionsAt(Vector3Int p)
+            {
+                if (collisionMap.ContainsKey(p) == false)
+                    return new HashSet<GridObject>();
+                return collisionMap[p];
             }
 
-            public void Rotate(GridObject o, Vector3Int rotation) {
-                // [TODO] (1, 0, 0), (0, -1, 0), (0, 0, 2)
+            public Vector3Int GetPositionOf(GridObject o)
+            {
+                return objPositions[o];
             }
 
-            public void Scale(GridObject o, Vector3Int scale) {
-                // [TODO] (1, -1, 1), (1, 2, 1), (0, 0, 0)
-            }
-
-            public void RemapVolume(GridObject o, List<Vector3Int> volume) {
-                List<Vector3Int> v = o.volume;
-                o.volume = volume;
-                if (IsColliding(o) == true) {
-                    o.volume = v;
+            public void RemapVolume(GridObject o, IEnumerable<Vector3Int> volume)
+            {
+                Vector3Int p = objPositions[o];
+                HashSet<Vector3Int> v1 = o.volume;
+                HashSet<Vector3Int> v2 = new HashSet<Vector3Int>(volume);
+                o.volume = v2;
+                if (IsColliding(o) == true)
+                {
+                    o.volume = v1;
                     return;
                 }
 
-                o.volume = v;
+                o.volume = v1;
                 DeregisterObject(o);
-                o.volume = volume;
-                RegisterObject(o);
+                o.volume = v2;
+                RegisterObject(o, p);
             }
 
             public bool IsColliding(GridObject o) { return IsColliding(ToGridSpace(o), o); }
-            public bool IsColliding(Vector3Int position, GridObject o = null) {
-                foreach (Vector3Int offset in o.volume) {
-                    HashSet<GridObject> objectsInCell = collisionMap[position + offset];
+            public bool IsColliding(Vector3Int position, GridObject o = null)
+            {
+                foreach (Vector3Int offset in o.volume)
+                {
+                    HashSet<GridObject> objectsInCell = GetCollisionsAt(position + offset);
                     int check = objectsInCell.Contains(o) ? 1 : 0; // Don't count ourselves if we're on the grid
                     if (objectsInCell.Count > check)
                         return true;
@@ -73,24 +82,26 @@
                 return false;
             }
 
-            public bool RegisterObject(GridObject o, bool force = false) {
-                Vector3Int position = ToGridSpace(o);
+            public bool RegisterObject(GridObject o, Vector3Int position, bool force = false)
+            {
                 if (force == false && IsColliding(position, o) == true)
                     return false;
 
+                o.grid = this;
                 objPositions[o] = position;
                 foreach (Vector3Int offset in o.volume)
-                    SetGridPoint(position, o, true);
+                    SetGridPoint(position + offset, o, true);
                 return true;
             }
 
             public void DeregisterObject(GridObject o)
             {
-                Vector3Int position = ToGridSpace(o);
+                Vector3Int position = objPositions[o];
 
+                o.grid = null;
                 objPositions.Remove(o);
                 foreach (Vector3Int offset in o.volume)
-                    SetGridPoint(position, o, true);
+                    SetGridPoint(position + offset, o, true);
             }
 
             public Vector3Int ToGridSpace(GridObject o) { return ToGridSpace(o.transform.position); }
