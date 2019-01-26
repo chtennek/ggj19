@@ -20,7 +20,7 @@ namespace Primitives
             private Vector2 lastMove;
             private float lastMoveTimestamp;
 
-            public override void OnTrigger() { Debug.Log("hi"); }
+            public override void OnTrigger() { }
             public override void OnInput(Vector2 v)
             {
                 Move(v);

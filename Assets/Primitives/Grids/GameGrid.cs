@@ -12,15 +12,15 @@
             public Vector3 gridScale = Vector3.one;
             public Vector3 gridOffset = Vector3.zero;
 
-            public LayerMask layerMask = ~1;
+            public LayerMask initializeWithLayers = ~1;
             private Dictionary<GridObject, Vector3Int> objPositions;
-            private Dictionary<Vector3Int, HashSet<GridObject>> collisionMap; // Unused: performance issues?
+            private Dictionary<Vector3Int, HashSet<GridObject>> collisionMap; // Performance?
 
             private void Awake()
             {
                 collisionMap = new Dictionary<Vector3Int, HashSet<GridObject>>();
                 foreach (GridObject o in FindObjectsOfType<GridObject>()) {
-                    if ((layerMask & o.gameObject.layer) > 0)
+                    if ((initializeWithLayers & o.gameObject.layer) > 0)
                         RegisterObject(o);
                 }
             }
@@ -35,7 +35,8 @@
                     collisionMap[position].Remove(o);
             }
 
-            public void Translate(GridObject o, Vector3Int offset) {
+            public bool Translate(GridObject o, Vector3Int offset) {
+                return false;
                 // [TODO]
             }
 
@@ -62,8 +63,13 @@
             }
 
             public bool IsColliding(GridObject o) { return IsColliding(ToGridSpace(o), o); }
-            public bool IsColliding(Vector3 position, GridObject o = null) {
-                // [TODO] remember, can't collide with itself
+            public bool IsColliding(Vector3Int position, GridObject o = null) {
+                foreach (Vector3Int offset in o.volume) {
+                    HashSet<GridObject> objectsInCell = collisionMap[position + offset];
+                    int check = objectsInCell.Contains(o) ? 1 : 0; // Don't count ourselves if we're on the grid
+                    if (objectsInCell.Count > check)
+                        return true;
+                }
                 return false;
             }
 

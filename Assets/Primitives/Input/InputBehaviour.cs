@@ -10,7 +10,7 @@ namespace Primitives
             public string actionName = "Position";
 
             public abstract void OnTrigger();
-            public abstract void OnInput(Vector2 v);
+            public abstract void OnInput(Vector2 input);
         }
     }
 }
