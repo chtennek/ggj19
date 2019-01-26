@@ -24,7 +24,10 @@
                 foreach (GridObject o in FindObjectsOfType<GridObject>())
                 {
                     if (initializeWithTag == o.tag)
+                    {
                         RegisterObject(o, ToGridSpace(o));
+                        o.grid = this;
+                    }
                 }
             }
 
@@ -51,24 +54,6 @@
                 return objPositions[o];
             }
 
-            public void RemapVolume(GridObject o, IEnumerable<Vector3Int> volume)
-            {
-                Vector3Int p = objPositions[o];
-                HashSet<Vector3Int> v1 = o.volume;
-                HashSet<Vector3Int> v2 = new HashSet<Vector3Int>(volume);
-                o.volume = v2;
-                if (IsColliding(o) == true)
-                {
-                    o.volume = v1;
-                    return;
-                }
-
-                o.volume = v1;
-                DeregisterObject(o);
-                o.volume = v2;
-                RegisterObject(o, p);
-            }
-
             public bool IsColliding(GridObject o) { return IsColliding(ToGridSpace(o), o); }
             public bool IsColliding(Vector3Int position, GridObject o = null)
             {
@@ -82,23 +67,23 @@
                 return false;
             }
 
-            public bool RegisterObject(GridObject o, Vector3Int position, bool force = false)
-            {
-                if (force == false && IsColliding(position, o) == true)
-                    return false;
+            public void RefreshObject(GridObject o) {
+                DeregisterObject(o);
+                RegisterObject(o);
+            }
 
-                o.grid = this;
+            public void RegisterObject(GridObject o) { RegisterObject(o, ToGridSpace(o)); }
+            public void RegisterObject(GridObject o, Vector3Int position)
+            {
                 objPositions[o] = position;
                 foreach (Vector3Int offset in o.volume)
                     SetGridPoint(position + offset, o, true);
-                return true;
             }
 
             public void DeregisterObject(GridObject o)
             {
                 Vector3Int position = objPositions[o];
 
-                o.grid = null;
                 objPositions.Remove(o);
                 foreach (Vector3Int offset in o.volume)
                     SetGridPoint(position + offset, o, true);

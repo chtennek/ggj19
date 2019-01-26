@@ -11,12 +11,12 @@ public class TilemapGridObject : GridObject
     public Tilemap tilemap;
     public Tile tile;
 
-    public override void MergeVolume(IEnumerable<Vector3Int> vol)
+    public override void MergeVolume(IEnumerable<Vector3Int> vol, Vector3Int offset)
     {
-        base.MergeVolume(vol);
+        base.MergeVolume(vol, offset);
 
         foreach (Vector3Int p in vol)
-            tilemap.SetTile(p, tile);
+            tilemap.SetTile(p + offset, tile);
     }
 
     public override void RemapVolume(IEnumerable<Vector3Int> vol)

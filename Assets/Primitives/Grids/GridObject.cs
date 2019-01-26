@@ -13,18 +13,34 @@
             public HashSet<Vector3Int> volume = new HashSet<Vector3Int>();
             public GameGrid grid;
 
-            public void Awake()
+            public void Start()
             {
                 RemapVolume(initialVolume);
             }
 
-            public virtual void RemapVolume(IEnumerable<Vector3Int> vol) {
+            public virtual void RemapVolume(IEnumerable<Vector3Int> vol)
+            {
+                // [TODO] collision check?
+
+                grid.DeregisterObject(this);
                 volume.Clear();
                 foreach (Vector3Int v in vol)
                     volume.Add(v);
+                grid.RegisterObject(this);
             }
-            public virtual void MergeVolume(IEnumerable<Vector3Int> vol) {
-                volume.UnionWith(vol);
+
+            public void MergeVolume(IEnumerable<Vector3Int> vol) { MergeVolume(vol, Vector3Int.zero); }
+            public virtual void MergeVolume(IEnumerable<Vector3Int> vol, Vector3Int offset)
+            {
+                // [TODO] collision check?
+
+                grid.DeregisterObject(this);
+                foreach (Vector3Int v in vol)
+                {
+                    Debug.Log(v + offset);
+                    volume.Add(v + offset);
+                }
+                grid.RegisterObject(this);
             }
 
             public void Translate(GridObject o, Vector3Int offset)
@@ -36,10 +52,9 @@
                 if (grid.IsColliding(newPosition, this))
                     return;
 
-                GameGrid g = grid;
-                g.DeregisterObject(this);
-                g.RegisterObject(this, newPosition);
-                transform.position = g.ToWorldSpace(newPosition);
+                grid.DeregisterObject(this);
+                grid.RegisterObject(this, newPosition);
+                transform.position = grid.ToWorldSpace(newPosition);
             }
 
             public void Rotate(GridObject o, Vector3Int rotation)

@@ -23,10 +23,10 @@ namespace Primitives
                 player = ReInput.players.GetPlayer(playerId);
             }
 
-            private void Update()
+            private void FixedUpdate()
             {
                 foreach (InputBehaviour action in actions) {
-                    if (GetButton(action.actionName))
+                    if (GetButtonDown(action.actionName))
                         action.OnTrigger();
 
                     action.OnInput(GetAxisPair(action.actionName));
