@@ -17,12 +17,11 @@ public class LockControl : InputBehaviour
 
     public override void OnTrigger()
     {
-        Debug.Log("Lock");
         Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
         if (stack.grid.IsColliding(position, ghostPiece) == true)
             return;
 
-        Debug.Log("Success");
         stack.MergeVolume(ghostPiece.volume, position);
+        Debug.Log("Next Piece");
     }
 }

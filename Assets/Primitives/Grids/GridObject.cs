@@ -9,6 +9,7 @@
 
         public class GridObject : MonoBehaviour
         {
+            public string label;
             public List<Vector3Int> initialVolume = new List<Vector3Int> { Vector3Int.zero };
             public HashSet<Vector3Int> volume = new HashSet<Vector3Int>();
             public GameGrid grid;
