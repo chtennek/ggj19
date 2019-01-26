@@ -5,15 +5,12 @@ using Primitives.Core;
 
 namespace Primitives
 {
-    namespace Physics
+    namespace Input
     {
         using UnityEngine;
 
-        public class QuantizedControl : MonoBehaviour, ITriggerable2D
+        public class QuantizedControl : InputBehaviour
         {
-            public string triggerName = "Position";
-            public string TriggerName { get { return triggerName; } }
-
             [Header("Parameters")]
             public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
             public Vector3 gridOffset;
@@ -23,7 +20,8 @@ namespace Primitives
             private Vector2 lastMove;
             private float lastMoveTimestamp;
 
-            public void OnTrigger(Vector2 v)
+            public override void OnTrigger() { Debug.Log("hi"); }
+            public override void OnInput(Vector2 v)
             {
                 Move(v);
             }

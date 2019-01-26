@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 using Primitives.Core;
+using Primitives.Input;
 
 namespace Primitives
 {

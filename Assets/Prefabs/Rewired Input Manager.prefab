@@ -174,7 +174,10 @@ MonoBehaviour:
       _startPlaying: 1
       _defaultJoystickMaps: []
       _defaultMouseMaps: []
-      _defaultKeyboardMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 2
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 1
@@ -186,7 +189,10 @@ MonoBehaviour:
       _startPlaying: 1
       _defaultJoystickMaps: []
       _defaultMouseMaps: []
-      _defaultKeyboardMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 3
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 0
@@ -194,7 +200,7 @@ MonoBehaviour:
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
-      _name: Move Horizontal
+      _name: MoveHorizontal
       _type: 0
       _descriptiveName: left/right
       _positiveDescriptiveName: 
@@ -203,7 +209,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 0
     - _id: 1
-      _name: Move Vertical
+      _name: MoveVertical
       _type: 0
       _descriptiveName: up/down
       _positiveDescriptiveName: 
