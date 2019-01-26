@@ -20,8 +20,7 @@ namespace Primitives
             private Vector2 lastMove;
             private float lastMoveTimestamp;
 
-            public override void OnTrigger() { }
-            public override void OnInput(Vector2 input)
+            public override void OnAxis2D(Vector2 input)
             {
                 input = input.Quantized();
                 if (input == lastMove && Time.time < lastMoveTimestamp + delayedAutoRepeat)
@@ -39,7 +38,15 @@ namespace Primitives
 
             public void Move(Vector3Int offset)
             {
-                gridObject.Translate(gridObject, offset);
+                gridObject.Translate(offset);
+            }
+
+            public override void OnTrigger()
+            {
+            }
+
+            public override void OnAxis2DDown(Vector2 input)
+            {
             }
         }
     }

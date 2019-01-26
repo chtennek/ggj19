@@ -1122,6 +1122,10 @@ GameObject:
   - component: {fileID: 885931249}
   - component: {fileID: 885931250}
   - component: {fileID: 885931251}
+  - component: {fileID: 885931255}
+  - component: {fileID: 885931254}
+  - component: {fileID: 885931253}
+  - component: {fileID: 885931252}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1332,6 +1336,9 @@ MonoBehaviour:
   actions:
   - {fileID: 885931250}
   - {fileID: 885931251}
+  - {fileID: 885931255}
+  - {fileID: 885931254}
+  - {fileID: 885931253}
 --- !u!114 &885931250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1372,75 @@ MonoBehaviour:
   actionName: Lock Piece
   stack: {fileID: 417972880}
   ghostPiece: {fileID: 885931248}
+  queue: {fileID: 885931252}
+--- !u!114 &885931252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ca170632286f1497bb6775d1bf227c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bag: {fileID: 2992565750969762531}
+  iterations: 15
+--- !u!114 &885931253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: eac7a0f18ef7c4a7aa7a4c2d332a7220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Rotate CCW
+  ghostPiece: {fileID: 885931248}
+  rotation: {x: 0, y: 0, z: -1}
+--- !u!114 &885931254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: eac7a0f18ef7c4a7aa7a4c2d332a7220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Rotate CW
+  ghostPiece: {fileID: 885931248}
+  rotation: {x: 0, y: 0, z: 1}
+--- !u!114 &885931255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 28dd5e751e16441ddb82db31b0674d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Flip
+  ghostPiece: {fileID: 885931248}
+--- !u!1 &2992565750969762531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2992565750969762531, guid: c2d7308ad68144027bc2c94289618ccd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4297787652547192086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4297787652547192086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,6 +1576,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._actionId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._keyboardKeyCode
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._actionId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._keyboardKeyCode
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._actionId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786050463816583167, guid: b4668312331a64024a0f9ea0b5ddccdc,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._keyboardKeyCode
+      value: 108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4668312331a64024a0f9ea0b5ddccdc, type: 3}

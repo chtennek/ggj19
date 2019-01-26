@@ -18,10 +18,6 @@ public class LockControl : InputBehaviour
         GetNextPiece();
     }
 
-    public override void OnInput(Vector2 input)
-    {
-    }
-
     public override void OnTrigger()
     {
         Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
@@ -40,5 +36,13 @@ public class LockControl : InputBehaviour
             ghostPiece.RemapVolume(new HashSet<Vector3Int>());
         else
             ghostPiece.RemapVolume(piece.volume);
+    }
+
+    public override void OnAxis2D(Vector2 input)
+    {
+    }
+
+    public override void OnAxis2DDown(Vector2 input)
+    {
     }
 }

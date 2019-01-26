@@ -43,7 +43,6 @@
 
                 foreach (Vector3Int v in vol)
                 {
-                    Debug.Log(v + offset);
                     volume.Add(v + offset);
                 }
 
@@ -51,7 +50,7 @@
                     grid.RegisterObject(this);
             }
 
-            public void Translate(GridObject o, Vector3Int offset)
+            public void Translate(Vector3Int offset)
             {
                 if (offset == Vector3Int.zero || grid == null)
                     return;
@@ -65,14 +64,43 @@
                 transform.position = grid.ToWorldSpace(newPosition);
             }
 
-            public void Rotate(GridObject o, Vector3Int rotation)
+            public void Rotate(Vector3Int rotation)
             {
+                if (grid == null)
+                    return;
+                
+                while (rotation.z != 0) {
+                    if (rotation.z > 0) {
+                        HashSet<Vector3Int> newVolume = new HashSet<Vector3Int>();
+                        foreach (Vector3Int p in volume) {
+                            newVolume.Add(new Vector3Int(p.y, -p.x, p.z)); // CW
+                        }
+                        RemapVolume(newVolume);
+                        rotation.z -= 1;
+                    }
+                    if (rotation.z < 0)
+                    {
+                        HashSet<Vector3Int> newVolume = new HashSet<Vector3Int>();
+                        foreach (Vector3Int p in volume)
+                        {
+                            newVolume.Add(new Vector3Int(p.y, -p.x, p.z)); // CCW
+                        }
+                        RemapVolume(newVolume);
+                        rotation.z += 1;
+                    }
+                }
+
                 // [TODO] (1, 0, 0), (0, -1, 0), (0, 0, 2)
             }
 
-            public void Scale(GridObject o, Vector3Int scale)
+            public void Scale(Vector3Int scale)
             {
-                // [TODO] (1, -1, 1), (1, 2, 1), (0, 0, 0)
+                HashSet<Vector3Int> newVolume = new HashSet<Vector3Int>();
+                foreach (Vector3Int p in volume)
+                {
+                    newVolume.Add(Vector3Int.Scale(scale, p)); // CCW
+                }
+                RemapVolume(newVolume);
             }
         }
     }
