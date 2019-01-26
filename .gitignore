@@ -1,5 +1,9 @@
 .DS_Store
 
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db.meta
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
