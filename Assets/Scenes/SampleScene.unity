@@ -1242,9 +1242,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 11500000, guid: 21a63e904360548799c3cedda441221e, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b9a3c1a34054df98be55c936736e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   volume:
   - {x: 0, y: 0, z: 0}
-  grid: {fileID: 0}
+  grid: {fileID: 277038289}
+  tilemap: {fileID: 885931247}
+  tile: {fileID: 11400000, guid: f77f5b7e26eca429581bafd98937b248, type: 2}
