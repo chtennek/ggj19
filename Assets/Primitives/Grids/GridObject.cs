@@ -52,16 +52,20 @@
 
             public void Translate(Vector3Int offset)
             {
-                if (offset == Vector3Int.zero || grid == null)
+                if (offset == Vector3Int.zero)
                     return;
-
                 Vector3Int newPosition = grid.GetPositionOf(this) + offset;
-                if (grid.IsColliding(newPosition, this))
+                MoveTo(newPosition);
+            }
+
+            public void MoveTo(Vector3Int position)
+            {
+                if (grid == null || grid.IsColliding(position, this))
                     return;
 
                 grid.DeregisterObject(this);
-                grid.RegisterObject(this, newPosition);
-                transform.position = grid.ToWorldSpace(newPosition);
+                grid.RegisterObject(this, position);
+                transform.position = grid.ToWorldSpace(position);
             }
 
             public void Rotate(Vector3Int rotation)

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 
 using Primitives.Core;
@@ -38,6 +38,9 @@ namespace Primitives
 
             public void Move(Vector3Int offset)
             {
+                if (offset == Vector3Int.zero)
+                    return;
+
                 gridObject.Translate(offset);
             }
 

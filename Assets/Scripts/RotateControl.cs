@@ -6,14 +6,14 @@ using Primitives.Core;
 using Primitives.Input;
 using Primitives.Grid;
 
-public class RotateControl : InputBehaviour
+public class RotateControl : PieceInputBehaviour
 {
-    public GridObject ghostPiece;
     public Vector3Int rotation;
 
     public override void OnTrigger()
     {
-        ghostPiece.Rotate(rotation);
+        piece.Rotate(rotation);
+        control.OnPieceModified();
     }
 
     public override void OnAxis2D(Vector2 input)

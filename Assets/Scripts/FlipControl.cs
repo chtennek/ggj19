@@ -6,13 +6,13 @@ using Primitives.Core;
 using Primitives.Input;
 using Primitives.Grid;
 
-public class FlipControl : InputBehaviour
+public class FlipControl : PieceInputBehaviour
 {
-    public GridObject ghostPiece;
 
     public override void OnTrigger()
     {
-        ghostPiece.Scale(new Vector3Int(-1, 1, 1));
+        piece.Scale(new Vector3Int(-1, 1, 1));
+        control.OnPieceModified();
     }
 
     public override void OnAxis2D(Vector2 input)
