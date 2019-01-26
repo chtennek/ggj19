@@ -60,7 +60,7 @@
 
             public void MoveTo(Vector3Int position)
             {
-                if (grid == null || grid.IsColliding(position, this))
+                if (grid == null)
                     return;
 
                 grid.DeregisterObject(this);

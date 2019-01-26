@@ -19,10 +19,25 @@ public class PieceControl : InputBehaviour
 
     public GridControl ghostControl;
 
+    private Vector3Int lastInput;
+
     public IEnumerator Start()
     {
         yield return null;
         GetNextPiece();
+    }
+
+    public void Update()
+    {
+        Vector3Int p = ghostPiece.grid.ToGridSpace(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        p.z = 0;
+
+        if (lastInput != p && ghostPiece.grid.IsColliding(p, ghostPiece) == false)
+        {
+            lastInput = p;
+            ghostPiece.MoveTo(p);
+            OnPieceModified();
+        }
     }
 
     public override void OnTrigger()
@@ -35,7 +50,8 @@ public class PieceControl : InputBehaviour
         GetNextPiece();
     }
 
-    public void OnPieceModified() {
+    public void OnPieceModified()
+    {
         if (IsGhostPieceLegal() == true)
             ghostPiece.tile = validTile;
         else
@@ -44,16 +60,15 @@ public class PieceControl : InputBehaviour
         ghostPiece.RefreshTilemap();
     }
 
-    public bool IsGhostPieceLegal() {
+    public bool IsGhostPieceLegal()
+    {
         bool legal = true;
         Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
         if (stack.grid.IsColliding(position, ghostPiece) == true)
             legal = false;
 
-        ghostPiece.Translate(Vector3Int.down);
-        if (stack.grid.IsColliding(position, ghostPiece) == false)
+        if (stack.grid.IsColliding(position + Vector3Int.down, ghostPiece) == false)
             legal = false;
-        ghostPiece.Translate(Vector3Int.up);
 
         return legal;
     }

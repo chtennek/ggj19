@@ -15,6 +15,14 @@ namespace Primitives
             public Tilemap tilemap;
             public Tile tile;
 
+            public void Reset()
+            {
+                if (grid == null)
+                    grid = GetComponent<GameGrid>();
+                if (tilemap == null)
+                    tilemap = GetComponent<Tilemap>();
+            }
+
             public void Awake()
             {
                 if (readFromTilemapOnAwake)
