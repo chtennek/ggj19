@@ -15,8 +15,8 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="conflict.svg"
-   inkscape:export-filename="C:\Users\Eric\Documents\GitHub\ggj19\Assets\Sprites\conflict.png"
+   sodipodi:docname="down.svg"
+   inkscape:export-filename="C:\Users\Eric\Documents\GitHub\ggj19\Assets\Sprites\down.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -28,18 +28,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="201.36209"
-     inkscape:cy="124.03635"
+     inkscape:zoom="0.35"
+     inkscape:cx="189.86863"
+     inkscape:cy="107.9029"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="true"
+     inkscape:current-layer="svg8"
+     showgrid="false"
      units="px"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-page="true">
     <inkscape:grid
        type="xygrid"
        id="grid815"
@@ -55,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,15 +66,32 @@
      id="layer1"
      transform="translate(0,-229.26665)">
     <path
-       style="fill:#424242;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 16.933332,271.59999 8.466667,8.46666 8.466667,-8.46667 8.466666,8.46667 8.466667,-8.46666 -8.466669,-8.46667 8.466668,-8.46667 -8.466667,-8.46667 -8.466665,8.46667 -8.466667,-8.46667 -8.466666,8.46667 8.466666,8.46667 z"
-       id="path843"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccc" />
-    <path
        style="opacity:1;fill:#424242;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 16 0 L 0 16 L 0 240 L 16 256 L 240 256 L 256 240 L 256 16 L 240 0 L 16 0 z M 40 40 L 216 40 L 216 216 L 40 216 L 40 40 z "
-       transform="matrix(0.26458333,0,0,0.26458333,0,229.26665)"
+       d="M 4.2333338,229.26666 4.9999988e-7,233.49999 v 59.26667 L 4.2333338,296.99999 H 63.5 l 4.233333,-4.23333 V 233.49999 L 63.5,229.26666 Z m 6.3499992,10.58333 H 57.15 v 46.56667 H 10.583333 Z"
        id="path844" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <path
+       transform="translate(0,-229.26665)"
+       style="fill:#424242;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 33.866666,286.41665 25.4,277.94998 10.583333,263.13332 19.05,254.66665 l 14.816666,14.81667 14.816667,-14.81667 8.466666,8.46667 -14.816666,14.81666 z"
+       id="path2591"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="display:none">
+    <path
+       style="fill:#424242;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 33.866666,50.799999 25.4,42.333333 16.933333,33.866666 25.4,25.4 33.866666,33.866666 42.333333,25.4 l 8.466666,8.466666 -8.466666,8.466667 z"
+       id="path843"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
