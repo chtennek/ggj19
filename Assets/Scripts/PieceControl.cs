@@ -16,12 +16,14 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     public TilemapGridObject ghostPiece;
     public Tile validTile;
     public Tile invalidTile;
+    public Tile downTile;
 
     public GridControl ghostControl;
 
     [Header("UI")]
     public GameValue piecesLeft;
     public GameValue score;
+    public CanvasGroup gameEnd;
 
     private Vector3Int lastInput;
 
@@ -47,7 +49,10 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     public override void OnTrigger()
     {
         if (ghostPiece.volume.Count == 0)
+        {
+            gameEnd.alpha = 1;
             return;
+        }
 
         Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
         if (IsGhostPieceLegal() == false)
@@ -64,7 +69,14 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
         if (IsGhostPieceLegal() == true)
             ghostPiece.tile = validTile;
         else
-            ghostPiece.tile = invalidTile;
+        {
+            Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
+            if (stack.grid.IsColliding(position + Vector3Int.down, ghostPiece) == false)
+                ghostPiece.tile = downTile;
+            else
+                ghostPiece.tile = invalidTile;
+        }
+            
 
         ghostPiece.RefreshTilemap();
     }
@@ -85,7 +97,7 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     public void GetNextPiece()
     {
         GridObject piece = queue.Dequeue();
-        piecesLeft.Value -= 1;
+        piecesLeft.Value = Mathf.Clamp(piecesLeft.Value - 1, 0, Mathf.Infinity);
         if (piece == null)
             ghostPiece.RemapVolume(new HashSet<Vector3Int>());
         else
