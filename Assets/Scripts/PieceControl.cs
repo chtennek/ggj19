@@ -46,15 +46,17 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
 
     public override void OnTrigger()
     {
+        if (ghostPiece.volume.Count == 0)
+            return;
+
         Vector3Int position = ghostPiece.grid.GetPositionOf(ghostPiece);
         if (IsGhostPieceLegal() == false)
             return;
 
         // Place piece
         stack.MergeVolume(ghostPiece.volume, position);
-        GetNextPiece();
-        piecesLeft.Value -= 1;
         score.Value += 5;
+        GetNextPiece();
     }
 
     public void OnPieceModified()
@@ -83,6 +85,8 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     public void GetNextPiece()
     {
         GridObject piece = queue.Dequeue();
+        piecesLeft.Value -= 1;
+        Debug.Log(piecesLeft.Value);
         if (piece == null)
             ghostPiece.RemapVolume(new HashSet<Vector3Int>());
         else

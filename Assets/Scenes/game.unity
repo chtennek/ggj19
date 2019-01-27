@@ -3502,15 +3502,6 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: 14, y: 12, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 15, y: 12, z: 0}
     second:
       m_TileIndex: 0
@@ -5313,15 +5304,15 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 451
+  - m_RefCount: 450
     m_Data: {fileID: 11400000, guid: f77f5b7e26eca429581bafd98937b248, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 451
+  - m_RefCount: 450
     m_Data: {fileID: 21300000, guid: ad6651e61facb954a9d57b76df666013, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 451
+  - m_RefCount: 450
     m_Data:
       e00: 1
       e01: 0
@@ -5340,7 +5331,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 451
+  - m_RefCount: 450
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5482,6 +5473,7 @@ GameObject:
   - component: {fileID: 885931251}
   - component: {fileID: 885931249}
   - component: {fileID: 885931248}
+  - component: {fileID: 885931256}
   - component: {fileID: 885931250}
   - component: {fileID: 885931255}
   - component: {fileID: 885931254}
@@ -5703,6 +5695,7 @@ MonoBehaviour:
   - {fileID: 885931255}
   - {fileID: 885931254}
   - {fileID: 885931253}
+  - {fileID: 885931256}
 --- !u!114 &885931250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5754,7 +5747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag: {fileID: 2992565750969762531}
-  iterations: 15
+  iterations: 4
 --- !u!114 &885931253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5805,6 +5798,23 @@ MonoBehaviour:
   actionName: Flip
   piece: {fileID: 885931251}
   control: {fileID: 885931248}
+--- !u!114 &885931256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0cabe8a351ce942deafecad3f13ccb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Trash
+  piece: {fileID: 885931251}
+  control: {fileID: 885931248}
+  ghost: {fileID: 885931248}
 --- !u!1 &1539698638
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,7 +5976,7 @@ MonoBehaviour:
   clampMin: 1
   clampMax: 1
   roundToInt: 1
-  _value: 12
+  _value: 48
 --- !u!114 &1691424255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6231,8 +6241,7 @@ MonoBehaviour:
   actionName: Lock Piece
   score: {fileID: 241270741}
   piecesLeft: {fileID: 1691424254}
-  destroyOnQueueEmpty:
-  - {fileID: 885931244}
+  destroyOnQueueEmpty: []
   nameInput: {fileID: 0}
   scoreDisplay: {fileID: 0}
   nextScene: submit

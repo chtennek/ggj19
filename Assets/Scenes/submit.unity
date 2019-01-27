@@ -766,6 +766,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 96e17474f840a01459f0cc936c5d4d9b,
         type: 3}
+    - target: {fileID: 6226892839067352264, guid: 249f22a1ed70f49ae873458618725d25,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 6465935794605775936, guid: 249f22a1ed70f49ae873458618725d25,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.a

@@ -44,7 +44,6 @@ public class GameFlowManager : InputBehaviour
 
     private void OnValueChanged(object source, EventArgs args)
     {
-        Debug.Log(piecesLeft.Value);
         if (piecesLeft != null && piecesLeft.Value == 0) {
             Debug.Log("Game over");
             foreach (GameObject g in destroyOnQueueEmpty) {
