@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6146731807845616801}
   - component: {fileID: 6146731807845616803}
   - component: {fileID: 6587192998388087020}
+  - component: {fileID: 6029607905901172869}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -98,4 +99,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
-  actions: []
+  actions:
+  - {fileID: 6029607905901172869}
+--- !u!114 &6029607905901172869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146731807845616802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a422891b397b3423da7fcc720743d928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Reset
+  score: {fileID: 0}
+  piecesLeft: {fileID: 0}
+  destroyOnQueueEmpty: []
+  nameInput: {fileID: 0}
+  scoreDisplay: {fileID: 0}
+  nextScene: title
