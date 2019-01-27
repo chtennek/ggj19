@@ -67,11 +67,6 @@
                 return false;
             }
 
-            public void RefreshObject(GridObject o) {
-                DeregisterObject(o);
-                RegisterObject(o);
-            }
-
             public void RegisterObject(GridObject o) { RegisterObject(o, ToGridSpace(o)); }
             public void RegisterObject(GridObject o, Vector3Int position)
             {
@@ -86,7 +81,7 @@
 
                 objPositions.Remove(o);
                 foreach (Vector3Int offset in o.volume)
-                    SetGridPoint(position + offset, o, true);
+                    SetGridPoint(position + offset, o, false);
             }
 
             public Vector3Int ToGridSpace(GridObject o) { return ToGridSpace(o.transform.position); }
