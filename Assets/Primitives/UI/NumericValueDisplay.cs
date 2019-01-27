@@ -17,6 +17,8 @@ namespace Primitives
 
             public bool integerDisplayOnly = true;
             public int zeroPadding = 0;
+            public string prefix;
+            public string suffix;
 
             protected override void Reset()
             {
@@ -39,7 +41,7 @@ namespace Primitives
                     else
                         displayValue = Mathf.FloorToInt(displayValue);
                 }
-                string text = displayValue.ToString().PadLeft(zeroPadding, '0');
+                string text = prefix + displayValue.ToString().PadLeft(zeroPadding, '0') + suffix;
                 return text;
             }
 

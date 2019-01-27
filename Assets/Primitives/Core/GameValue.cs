@@ -9,6 +9,7 @@ namespace Primitives {
         {
             public event EventHandler ValueChanged;
 
+            public string label;
             public float minValue = -Mathf.Infinity;
             public float maxValue = Mathf.Infinity;
             public bool clampMin = true;
@@ -23,6 +24,8 @@ namespace Primitives {
                 set
                 {
                     _value = Mathf.Clamp(value, minValue, maxValue);
+                    if (roundToInt)
+                        _value = Mathf.RoundToInt(_value); // [TODO] reclamp
                     OnValueChanged();
                 }
             }

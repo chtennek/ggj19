@@ -8,7 +8,7 @@ using Primitives.Core;
 using Primitives.Input;
 using Primitives.Grid;
 
-public class PieceControl : InputBehaviour
+public class PieceControl : InputBehaviour // Most of the game logic is in here
 {
     public GridObject stack;
     public PieceQueue queue;
@@ -18,6 +18,10 @@ public class PieceControl : InputBehaviour
     public Tile invalidTile;
 
     public GridControl ghostControl;
+
+    [Header("UI")]
+    public GameValue piecesLeft;
+    public GameValue score;
 
     private Vector3Int lastInput;
 
@@ -46,8 +50,11 @@ public class PieceControl : InputBehaviour
         if (IsGhostPieceLegal() == false)
             return;
 
+        // Place piece
         stack.MergeVolume(ghostPiece.volume, position);
         GetNextPiece();
+        piecesLeft.Value -= 1;
+        score.Value += 5;
     }
 
     public void OnPieceModified()

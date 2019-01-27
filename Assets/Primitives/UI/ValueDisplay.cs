@@ -26,7 +26,8 @@ namespace Primitives
             protected float displayValue; // current mid-lerp display value
             private IEnumerator coroutine;
 
-            protected virtual void Reset() {
+            protected virtual void Reset()
+            {
                 value = GetComponent<GameValue>();
             }
 
@@ -35,7 +36,8 @@ namespace Primitives
                 if (value == null)
                     enabled = false;
 
-                if (enabled) {
+                if (enabled)
+                {
                     value.ValueChanged += OnValueChanged;
                     SyncDisplay();
                 }
@@ -43,7 +45,8 @@ namespace Primitives
 
             private void OnValueChanged(object source, EventArgs args)
             {
-                StopCoroutine(coroutine);
+                if (coroutine != null)
+                    StopCoroutine(coroutine);
                 coroutine = Coroutine_UpdateDisplay();
                 StartCoroutine(coroutine);
             }
@@ -51,7 +54,8 @@ namespace Primitives
             // Stop lerping and force the value display to the actual value
             public void SyncDisplay()
             {
-                StopCoroutine(coroutine);
+                if (coroutine != null)
+                    StopCoroutine(coroutine);
                 displayValue = value.Value;
                 UpdateDisplay();
             }
@@ -64,9 +68,9 @@ namespace Primitives
                 float minDeltaValue = Mathf.MoveTowards(displayValue, value.Value, minDelta);
                 float maxDeltaValue = Mathf.MoveTowards(displayValue, value.Value, maxDelta);
                 if (lerpedValue <= value.Value)
-                    displayValue = Mathf.Clamp(displayValue, minDeltaValue, maxDeltaValue);
+                    displayValue = Mathf.Clamp(lerpedValue, minDeltaValue, maxDeltaValue);
                 else
-                    displayValue = Mathf.Clamp(displayValue, maxDeltaValue, minDeltaValue);
+                    displayValue = Mathf.Clamp(lerpedValue, maxDeltaValue, minDeltaValue);
             }
 
             private IEnumerator Coroutine_UpdateDisplay()
@@ -76,7 +80,7 @@ namespace Primitives
                     UpdateDisplayValue();
                     UpdateDisplay();
                     yield return new WaitForSeconds(1f / updatesPerSecond);
-                } 
+                }
             }
         }
     }
