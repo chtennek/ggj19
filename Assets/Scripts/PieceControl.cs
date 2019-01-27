@@ -86,7 +86,6 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     {
         GridObject piece = queue.Dequeue();
         piecesLeft.Value -= 1;
-        Debug.Log(piecesLeft.Value);
         if (piece == null)
             ghostPiece.RemapVolume(new HashSet<Vector3Int>());
         else

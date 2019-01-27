@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/game.unity
     guid: 92b0f83430f5648408075f61d9ac8030
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/submit.unity
     guid: 9e9e6c2828aaf4ed482d75bfeb4b260f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scores.unity
     guid: 8f6dc228142774555aaa2d32f2e73f74
   m_configObjects: {}

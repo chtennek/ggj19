@@ -149,17 +149,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241270739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3239.9998}
+  m_LocalPosition: {x: 0, y: 0, z: -3239.9988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1539698642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -792, y: -342}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 88, y: 183}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &241270741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5747,7 +5747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag: {fileID: 2992565750969762531}
-  iterations: 4
+  iterations: 5
 --- !u!114 &885931253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5952,11 +5952,11 @@ RectTransform:
   m_Father: {fileID: 1539698642}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -791.99994, y: 395.99994}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.00012, y: -126.00003}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1691424254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5976,7 +5976,7 @@ MonoBehaviour:
   clampMin: 1
   clampMax: 1
   roundToInt: 1
-  _value: 48
+  _value: 60
 --- !u!114 &1691424255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6244,7 +6244,7 @@ MonoBehaviour:
   destroyOnQueueEmpty: []
   nameInput: {fileID: 0}
   scoreDisplay: {fileID: 0}
-  nextScene: submit
+  nextScene: title
 --- !u!114 &6146731807821673697 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6029607905901172869, guid: cdc77a15286c1401181ea4ed6a011937,

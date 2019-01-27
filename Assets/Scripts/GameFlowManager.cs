@@ -29,6 +29,12 @@ public class GameFlowManager : InputBehaviour
             scoreDisplay.text = playerScore.ToString();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
+
     public override void OnTrigger()
     {
         if (enabled && (piecesLeft == null || piecesLeft.Value == 0)) {
