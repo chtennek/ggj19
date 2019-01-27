@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6146731807845616803}
   - component: {fileID: 6587192998388087020}
   - component: {fileID: 6029607905901172869}
+  - component: {fileID: 2587579114755698485}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -121,3 +122,18 @@ MonoBehaviour:
   nameInput: {fileID: 0}
   scoreDisplay: {fileID: 0}
   nextScene: title
+--- !u!114 &2587579114755698485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146731807845616802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4b8bdfc106844477ab22e41229173b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wantedAspectRatio: 1.7777778
+  landscapeModeOnly: 1
