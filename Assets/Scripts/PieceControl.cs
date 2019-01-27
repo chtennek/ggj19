@@ -24,6 +24,7 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
     public GameValue piecesLeft;
     public GameValue score;
     public CanvasGroup gameEnd;
+    public AudioClip clip;
 
     private Vector3Int lastInput;
 
@@ -59,6 +60,7 @@ public class PieceControl : InputBehaviour // Most of the game logic is in here
             return;
 
         // Place piece
+        AudioPlayer.Play(clip);
         stack.MergeVolume(ghostPiece.volume, position);
         score.Value += 5;
         GetNextPiece();

@@ -9,9 +9,11 @@ using Primitives.Grid;
 public class TrashControl : PieceInputBehaviour
 {
     public PieceControl ghost;
+    public AudioClip clip;
 
     public override void OnTrigger()
     {
+        AudioPlayer.Play(clip);
         ghost.GetNextPiece();
     }
 

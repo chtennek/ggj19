@@ -9,9 +9,11 @@ using Primitives.Grid;
 public class RotateControl : PieceInputBehaviour
 {
     public Vector3Int rotation;
+    public AudioClip clip;
 
     public override void OnTrigger()
     {
+        AudioPlayer.Play(clip);
         piece.Rotate(rotation);
         control.OnPieceModified();
     }
